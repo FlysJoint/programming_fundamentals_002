@@ -23,23 +23,67 @@ const catalogue = [
 ];
 
 function countBooks() {
-  // Your code here
+  return catalogue.length;
+//check validity
 }
 
 function checkBook(book) {
-  // Your code here
+  for (let i = 0; i < catalogue.length; i++) {
+    if (book === catalogue[i]) {
+      return true;
+    }
+  }
+return false;
+
+//check non-strings
 }
 
 function countBooksByFirstLetter(letter) {
-  // Your code here
+
+  let count = 0;  
+
+  for (let i = 0; i < catalogue.length; i++) {
+    if (catalogue[i][0] === letter) {
+      count++;
+    }
+  }
+  return count;
+
+  // test multiple letters
+// test non-letters
+// test symbols
+
 }
 
 function countBooksByKeyword(keyword) {
-  // Your code here
+    
+  let count = 0;
+  
+  if (keyword.length >= 3 && typeof keyword === 'string') {
+    for (let i = 0; i < catalogue.length; i++) {
+      if (catalogue[i].includes(keyword) || catalogue[i].toLowerCase().includes(keyword) || catalogue[i].toUpperCase().includes(keyword)) {
+        count++;
+      }
+    }
+    return count;
+  }
+  else {
+    return 'keyword must be string of at least 3 characters';
+  }
 }
 
 function getBooksByAuthor(author) {
-  // Your code here
+
+  const authorsWorks = [];
+
+  for (let i = 0; i < catalogue.length; i++) {
+
+    if (catalogue[i].includes(author)) {
+      authorsWorks.push(catalogue[i]);
+    }
+  }
+
+  return authorsWorks.length > 0 ? authorsWorks : 'No titles found';
 }
 
 module.exports = {
